@@ -1,0 +1,235 @@
+* {
+    border: none;
+    font-size: 1.15em;
+    font-family: 'Nova Square', sans-serif;
+
+}
+
+nav {
+    font-size: 1.1em;
+    display: block;
+    text-align: left;
+    margin-left: 10%;
+    margin-right : 10%;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    font-size: 2em;
+}
+
+h3 {
+    text-align: center;
+    color: gray;
+    font-size: 1em;
+}
+
+header {
+    background-color: rgb(70, 70, 70, 0.5);
+    width: 100%;
+    margin: 0px;
+}
+
+nav li {
+    text-shadow: 1px 1px 3px black;
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+
+.desktop-only {
+    display: none;
+}
+
+.mobile-only {
+    font-size: 1em;
+    display: block;
+    text-align: center;
+    width: 100%;
+    text-decoration: none;
+    text-shadow: 1px 1px 3px black;
+}
+
+nav li a {
+    text-decoration: none;
+}
+
+#artistPicker {
+    display: block;
+    color: white;
+}
+
+#songGuesser {
+    display: none;
+    color: white;
+}
+
+#resultScreen {
+    text-align: center;
+    display: none;
+    color: white;
+}
+
+#userResult {
+    font-size: 2em;
+}
+
+.topSongs {
+    display: grid;
+    grid-template-columns: 100%;
+}
+
+.songTile {
+    color: white;
+    text-align: center;
+    background-color: rgb(70, 70, 70, 0.5);
+    margin-bottom: 20px;
+    border: solid black 2px;
+    border-radius: 10%;
+}
+
+.songAlbum {
+    margin-top: 20px;
+    height: 350px;
+    border: solid black 3px;
+}
+
+.songText {
+    text-shadow: 3px 4px 2px black;
+}
+
+body {
+    background: linear-gradient(black, rgb(70, 70, 70));
+    min-height: 100vh;
+}
+
+form {
+    text-align: center;
+    padding: 20px;
+}
+
+button {
+    margin: 10px;
+}
+
+input {
+    text-align: center;
+    width: 100%;
+}
+
+#albumCover {
+    width: 100%;
+    border-radius: 10%;
+    border: solid black 2px;
+    padding: 0px;
+}
+
+.SOTDCaption {
+    display: none;
+    color: white;
+    text-shadow: 1px 1px 3px black;
+    background-color: rgb(255, 255, 255, 0.1);
+    border: solid black 2px;
+}
+
+.SOTDTitle {
+    color: white;
+    text-shadow: 1px 1px 3px black;
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.SOTDImage {
+    width: 100%;
+}
+
+/* Tablet only Styles */
+@media all and (min-width: 481px) and (max-width: 850px) {
+    #artistPicker {
+        width: 100%;
+    }
+
+    .topSongs {
+        grid-template-columns: 50% 50%;
+    }
+
+    .songAlbum {
+        height: 300px;
+        padding: 0px;
+    }
+}
+
+/* Tablet and Desktop Styles */
+@media all and (min-width: 481px) {
+    * {
+        font-size: 1.2em;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    nav {
+        text-align: center;
+    }
+
+    .mobile-only {
+        display: none;
+    }
+
+    .desktop-only {
+        display: block;
+    }
+
+    .SOTDCaption {
+        display: block;
+    }
+}
+
+/* Desktop only Styles */
+@media all and (min-width: 850px) {
+    #artistPicker {
+        width: 50%;
+        border: solid black 5px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: rgb(255, 255, 255, 0.1);
+    }
+    
+    #songGuesser {
+        width: 50%;
+        border: solid black 5px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: rgb(255, 255, 255, 0.1);
+    }
+    
+    #resultScreen {
+        width: 50%;
+        border: solid black 5px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: rgb(255, 255, 255, 0.1);
+    }
+
+    .desktop-only {
+        display: ruby;
+    }
+
+    .topSongs {
+        grid-template-columns: 50% 50%;
+    }
+
+    .songAlbum {
+        height: 500px;
+        padding: 0px;
+    }
+
+    .SOTDImage {
+        width: 500px;
+    }
+
+    .SOTDImageContainer {
+        width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
