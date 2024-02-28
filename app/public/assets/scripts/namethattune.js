@@ -5,9 +5,8 @@ let albumUrl = "";
 const options = {
     method: 'GET',
     headers: {
-        'X-RapidAPI-Key': 'f6a9473b33msh70f1102c9583329p1904f8jsnea6265abacfa',
-        'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com'
-    }
+      'Content-Type': 'application/json',
+    },
 }
 
 window.addEventListener("load", function () {
@@ -15,7 +14,7 @@ window.addEventListener("load", function () {
         artist = document.getElementById("userArtist").value;
 
         let formattedArtist = artist.replace(/\s+/g, "%20"); // Replaces all whitespaces with '%20'
-        let url = `https://genius-song-lyrics1.p.rapidapi.com/search/?q=${formattedArtist}&per_page=10&page=1`;
+        let url = `/api/geniusArtist?artist=${formattedArtist}`;
 
         fetch(url, options)
             .then(response => response.json())
@@ -35,7 +34,7 @@ window.addEventListener("load", function () {
                     lyricsContainer.innerText = "";
 
                     let artistId = artistReturn.result.primary_artist.id;
-                    let artistUrl = `https://genius-song-lyrics1.p.rapidapi.com/artist/songs/?id=${artistId}&per_page=10&page=1`;
+                    let artistUrl = `/api/geniusArtistSongs/${artistId}`
 
                     fetch(artistUrl, options)
                         .then(artistResponse => artistResponse.json())
@@ -44,7 +43,7 @@ window.addEventListener("load", function () {
                             console.log(artistData.songs[randomInt]);
 
                             let songId = artistData.songs[randomInt].id;
-                            let songUrl = `https://genius-song-lyrics1.p.rapidapi.com/song/lyrics/?id=${songId}&text_format=plain`;
+                            let songUrl =  `/api/geniusSongLyrics/${songId}`
 
                             songTitle = artistData.songs[randomInt].title;
                             albumUrl = artistData.songs[randomInt].song_art_image_url;
@@ -66,7 +65,7 @@ window.addEventListener("load", function () {
 
                                     for (let i = 0; i < 5; i++) {
                                         selectLyrics += allLyrics[i];
-                                        selectLyrics += '\n';
+                                           selectLyrics += '\n';
                                     }
 
                                     lyricsContainer.innerText = selectLyrics;

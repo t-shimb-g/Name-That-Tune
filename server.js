@@ -2,7 +2,10 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
-var path = require("path");
+const path = require("path");
+
+var apiRoutes = require("./app/routing/apiRoutes") // .js is assumed
+var htmlRoutes = require("./app/routing/htmlRoutes") // .js is assumed
 
 // Sets up the Express App
 // =============================================================
@@ -12,6 +15,9 @@ var PORT = process.env.PORT || 3000;
 // Sets up the Express app to handle data parsing
 tyler_app.use(bodyParser.urlencoded({ extended: true }));
 tyler_app.use(bodyParser.json());
+tyler_app.use(express.static('public'));
+
+// tyler_app.use(express.static(path.join(__dirname, "public")));
 
 // ================================================================================
 // ROUTER
@@ -19,8 +25,11 @@ tyler_app.use(bodyParser.json());
 // These routes give our server a "map" of how to respond when users visit or request data from various URLs.
 // ================================================================================
 
-require("./app/routing/apiRoutes")(tyler_app);
-require("./app/routing/htmlRoutes")(tyler_app);
+// require("./app/routing/apiRoutes")(tyler_app);
+// require("./app/routing/htmlRoutes")(tyler_app);
+
+tyler_app.use('/api', apiRoutes);
+tyler_app.use('/', htmlRoutes);
 
 // =============================================================================
 // LISTENER

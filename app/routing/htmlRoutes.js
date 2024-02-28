@@ -4,25 +4,29 @@
 // ===============================================================================
 var path = require("path");
 
-var friendsArray = require("../data/friends")
+const router = require('express').Router();
 
 // Routes
 // =============================================================
-module.exports = function (my_app) {
-    // Basic route that sends the user first to the AJAX Page
-    my_app.get("/", function (req, res) {
-        res.sendFile(path.join(__dirname, "../public/home.html"));
-    });
 
-    my_app.get("/survey", function (req, res) {
-        console.log(__dirname);
-        res.sendFile(path.join(__dirname, "../public/survey.html"));
-    });
+// Basic route that sends the user first to the AJAX Page
+router.get("/", function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/home.html"));
+});
 
-    my_app.get("*", function (req, res) {
-        console.log(__dirname);
-        res.sendFile(path.join(__dirname, "../public/home.html"));
-    });
+router.get("/songoftheday", function (req, res) {
+    console.log(__dirname);
+    res.sendFile(path.join(__dirname, "../public/songoftheday.html"));
+});
 
+router.get("/topsongs", function (req, res) {
+    console.log(__dirname);
+    res.sendFile(path.join(__dirname, "../public/topsongs.html"));
+});
 
-}
+router.get("*", function (req, res) {
+    console.log(__dirname);
+    res.send("<h1>Wrong Route!</h1>")
+});
+
+module.exports = router
