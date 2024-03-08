@@ -5,7 +5,7 @@ let albumUrl = "";
 const options = {
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
     },
 }
 
@@ -39,11 +39,13 @@ window.addEventListener("load", function () {
                     fetch(artistUrl, options)
                         .then(artistResponse => artistResponse.json())
                         .then(artistData => {
-                            let randomInt = Math.floor(Math.random() * 10)
+                            let randomInt = Math.floor(Math.random() * artistData.songs.length);
+                            console.log(randomInt);
+                            console.log(artistData.songs.length);
                             console.log(artistData.songs[randomInt]);
 
                             let songId = artistData.songs[randomInt].id;
-                            let songUrl =  `/api/geniusSongLyrics/${songId}`
+                            let songUrl = `/api/geniusSongLyrics/${songId}`
 
                             songTitle = artistData.songs[randomInt].title;
                             albumUrl = artistData.songs[randomInt].song_art_image_url;
@@ -57,7 +59,10 @@ window.addEventListener("load", function () {
                             songArtist.innerText = artist;
 
                             fetch(songUrl, options)
-                                .then(songResponse => songResponse.json())
+                                .then(songResponse => {
+                                    console.log(songResponse)
+                                    return songResponse.json()
+                                })
                                 .then(songData => {
                                     let allLyrics = songData.lyrics.lyrics.body.plain.split('\n');
 
@@ -65,7 +70,7 @@ window.addEventListener("load", function () {
 
                                     for (let i = 0; i < 5; i++) {
                                         selectLyrics += allLyrics[i];
-                                           selectLyrics += '\n';
+                                        selectLyrics += '\n';
                                     }
 
                                     lyricsContainer.innerText = selectLyrics;
@@ -84,11 +89,11 @@ window.addEventListener("load", function () {
         document.getElementById("resultScreen").style.display = "block";
     });
 
-    document.getElementById("resetButton").addEventListener("click", function() {
+    document.getElementById("resetButton").addEventListener("click", function () {
         document.getElementById("userArtist").value = "";
-        document.getElementById("userGuess").value = 
+        document.getElementById("userGuess").value =
 
-        document.getElementById("resultScreen").style.display = "none";
+            document.getElementById("resultScreen").style.display = "none";
         document.getElementById("artistPicker").style.display = "block";
     });
 });
