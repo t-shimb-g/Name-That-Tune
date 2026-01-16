@@ -118,7 +118,7 @@ input {
 }
 
 #albumCover {
-    width: 100%;
+    width: 50%;
     border-radius: 10%;
     border: solid black 2px;
     padding: 0px;
