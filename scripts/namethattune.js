@@ -104,7 +104,7 @@ function findArtist(apiData, IDX) {
 function verifyGuess(guess) {
     let userResult = document.getElementById("userResult");
 
-    if (guess.toLowerCase() == songTitle.toLowerCase) {
+    if (guess.toLowerCase() == songTitle.toLowerCase()) {
         userResult.innerText = "Correct!";
     }
     else {
